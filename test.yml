@@ -1,0 +1,20 @@
+---
+- name: Ansible定制模块开发测试
+  hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: Create a github Repo
+      github_repo:
+        github_auth_key: keuhaihwqohcuabcuiqbwdb
+        name: "Hello-World"
+        description: "This is your first repository"
+        private: no
+        has_issues: no
+        has_wiki: no
+        has_downloads: no
+        state: present
+      register: result
+
+    - debug: var=result
